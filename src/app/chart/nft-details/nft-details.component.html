@@ -1,0 +1,70 @@
+<section class="nft-details" *ngIf="selectedNft">
+	<header class="flex ai-c gap-20">
+		<!-- Nft image -->
+		<div class="image flex ai-c jc-c">
+			<ng-container *ngIf="selectedNft.ImageData !== ''; else nftInitials">
+				<img *ngIf="selectedNft.ImageData !== ''" [src]="selectedNft.ImageData" alt="Nft Image"/>
+			</ng-container>
+
+			<ng-template #nftInitials>
+				<span>{{ selectedNft.Name | getInitials }}</span>
+			</ng-template>
+		</div>
+
+		<!-- Nft name -->
+		<h3>{{selectedNft.Name}}</h3>
+	</header>
+
+	<div class="details mt-30">
+		<!-- Description -->
+		<div class="description pb-20">
+			<p>Description</p>
+
+			<span>{{ selectedNft.Description }}</span>
+		</div>
+
+		<!-- Details -->
+		<div class="details-content border pt-20 pb-20">
+			<p>Details</p>
+
+			<!-- Name -->
+			<div class="row">
+				<span class="title">Name</span>
+				<span class="value">{{ selectedNft.Name }}</span>
+			</div>
+
+			<!-- Owner -->
+			<div class="row" *ngIf="selectedNft.Owner">
+				<span class="title">Owner</span>
+				<span class="value owner">{{ selectedNft.Owner }}</span>
+			</div>
+
+			<!-- Token ID -->
+			<div class="row">
+				<span class="title">Token ID</span>
+				<span class="value">{{ selectedNft.TokenId }}</span>
+			</div>
+		</div>
+
+		<!-- Properties -->
+		<div class="details-content pt-20 pb-20"
+			 *ngIf="selectedNft.Properties.length > 0">
+			<p>Properties</p>
+
+			<div class="row" *ngFor="let property of selectedNft.Properties">
+				<span class="title">{{ property.Name }}</span>
+				<span class="value">{{ property.Value }}</span>
+			</div>
+		</div>
+	</div>
+
+	<div class="buttons flex gap-20 mt-50">
+		<app-button buttonTitle="Close"
+					variant="secondary"
+					(clicked)="closeClicked.emit()"></app-button>
+
+		<app-button buttonTitle="Detach from parent" (clicked)="detachFromParentClicked()" [buttonLoadingState]="buttonLoadingState"></app-button>
+
+		
+	</div>
+</section>

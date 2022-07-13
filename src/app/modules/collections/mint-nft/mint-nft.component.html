@@ -1,0 +1,80 @@
+<section class="mint-nft flex jc-c ai-c">
+	<div class="mint-nft-form">
+		<h3>Mint in {{ nftCollection.name }} collection</h3>
+
+		<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+			<!-- Name control -->
+			<app-input-control
+				name="Name"
+				placeholder="Name"
+				formControlName="name"
+				[formControl]="formGroupControls.name"
+			></app-input-control>
+
+			<!-- Description control -->
+			<app-textarea-control
+				name="Description"
+				placeholder="Description"
+				formControlName="description"
+				class="mb-4"
+				[formControl]="formGroupControls.description"
+			></app-textarea-control>
+
+			<!-- Upload image -->
+			<ng-container *ngIf="selectedImageData === ''; else imagePreview">
+				<div class="upload-image flex ai-c jc-c mb-26" (click)="fileInput.click()">
+
+					<p class="flex ai-c">
+						<mat-icon svgIcon="upload"></mat-icon>
+						Upload image
+					</p>
+				</div>
+			</ng-container>
+
+			<ng-template #imagePreview>
+				<div class="image-preview pb-20">
+					<img [src]="selectedImageData" alt="Selected Collection image" (click)="fileInput.click()"/>
+				</div>
+			</ng-template>
+
+			<input type="file" #fileInput (change)="onSelectedImage($event)">
+
+			<!-- Properties -->
+			<p class="properties-title">Properties</p>
+
+			<ng-container
+				*ngFor="let property of nftCollection.tokenPropertyPermissions"
+			>
+				<app-input-control
+					*ngIf="property.key.toLowerCase() !== 'name' && property.key.toLowerCase() !== 'description'"
+					[name]="property.key"
+					[formControl]="formGroup.controls[property.key]"
+				></app-input-control>
+			</ng-container>
+
+			<!-- Count control -->
+<!--			<app-input-control-->
+<!--				name="Count"-->
+<!--				formControlName="count"-->
+<!--				inputClass="count-control"-->
+<!--				[formControl]="formGroupControls.count"-->
+<!--			></app-input-control>-->
+
+			<div class="buttons mt-50 gap-20 flex ai-c">
+				<app-button
+					buttonTitle="Cancel"
+					type="button"
+					variant="secondary"
+					routerLink="/collections"
+				></app-button>
+
+				<app-button
+					buttonTitle="Save"
+					type="submit"
+					[buttonLoadingState]="buttonLoadingState"
+					[disabled]="!canSubmit"
+				></app-button>
+			</div>
+		</form>
+	</div>
+</section>

@@ -1,0 +1,19 @@
+:host {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+input {
+	height: 20.8px;
+}
+
+mat-icon {
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 786px) {
+	input {
+		max-height: unset;
+	}
+}

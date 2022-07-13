@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ng-unique-network-nft": {
+      "hosting": {
+        "ng-unique-network-nft": [
+          "ng-unique-network-nft"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ng-unique-network-nft"
+  }
+}

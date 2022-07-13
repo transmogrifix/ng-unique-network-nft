@@ -1,0 +1,29 @@
+<div class="collection-details" *ngIf="isOpened">
+	<!-- Collections -->
+	<mat-tab-group class="tab-navigation" animationDuration="0" (selectedIndexChange)="onTabChange($event)">
+		<mat-tab *ngFor="let collection of allCollections$ | async" [label]="collection.name">
+			<div class="flex gap-20 minh">
+				<!-- Nft -->
+				<div
+					class="nft-item"
+					*ngFor="let nft of collectionNfts$ | async"
+					(click)="selectedNewNft.emit(nft)"
+				>
+					<div class="image">
+						<!-- Image -->
+						<img [src]="nft.ImageData" alt="Nft"/>
+					</div>
+
+					<!-- Title -->
+					<p>{{ nft.Name }}</p>
+
+					<!-- Attach to button -->
+					<app-button (clicked)="onAttachToClicked($event, nft)"
+						buttonTitle="Attach To"
+						buttonWidth="116px"
+					></app-button>
+				</div>
+			</div>
+		</mat-tab>
+	</mat-tab-group>
+</div>

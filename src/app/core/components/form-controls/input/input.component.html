@@ -1,0 +1,57 @@
+<mat-label *ngIf="label" [class.disabled]="isDisabled">{{ name }}</mat-label>
+<mat-form-field
+	class="input-control"
+	[class]="inputClass"
+	[appearance]="appearance"
+>
+	<input
+		matInput
+		#input
+		[class.passwordHidden]="fieldType === 'password'"
+		[formControl]="formControl"
+		[type]="fieldType"
+		[placeholder]="placeholder"
+		[name]="name"
+		[value]="value"
+		[min]="isMinActive ? 0 : null"
+		(change)="setValue($event)"
+		(blur)="onTouch()"
+	>
+	<mat-icon
+		matSuffix
+		*ngIf="appearance === 'fill' && input.value !== ''"
+		(click)="deleteControlValue(input)"
+	>
+		close
+	</mat-icon>
+
+	<mat-icon
+		matSuffix
+		*ngIf="svgIcon"
+		[matTooltip]="tooltipMessage ?? ''"
+		[svgIcon]="svgIcon!"
+		(click)="iconClicked.emit()"
+	>
+	</mat-icon>
+
+	<mat-error *ngIf="formControl.hasError('required') && displayErrorMessage">
+		{{ errorMessagePrefix !== '' ? errorMessagePrefix : name }} is required
+	</mat-error>
+
+	<mat-error *ngIf="formControl.hasError('email')">Email is not valid</mat-error>
+
+	<mat-error
+		*ngIf="!formControl.hasError('required') && formControl.hasError('invalidPhoneNumber')"
+	>
+		Phone number is not valid
+	</mat-error>
+
+	<mat-error
+		*ngIf="formControl.hasError('invalidRecipientAccount') && !formControl.hasError('required')"
+	>
+		{{ name }} is not valid
+	</mat-error>
+	<mat-error *ngIf="formControl.hasError('pattern')">{{ errorMessagePrefix !== '' ? errorMessagePrefix : name }} is
+		not valid
+	</mat-error>
+</mat-form-field>

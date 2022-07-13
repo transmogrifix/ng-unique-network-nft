@@ -1,0 +1,14 @@
+<section class="all-collections flex fd-c gap-30 pb-20">
+    <!--<div class="button">
+      <app-button
+        buttonTitle="See All Collections"
+        svgIcon="chart"
+        buttonWidth="205px"
+        variant="secondary"
+        routerLink="/chart"
+      ></app-button>
+    </div>-->
+    <!-- All Collections -->
+    <app-collection *ngFor="let nftCollection of allNftCollections$ | async"
+                    [collection]="nftCollection"></app-collection>
+</section>

@@ -1,0 +1,52 @@
+<button
+	class="i-flex jc-c ai-c gap-4 br-4 w-100"
+	*ngIf="variant !== 'link'"
+	[class]="className"
+	[class.fd-rr]="iconPosition === 'left'"
+	[class.full-size-on-mobile]="fullSizeOnMobile"
+	[style.width]="buttonWidth"
+	[style.height]="buttonHeight"
+	[disabled]="disabled || buttonLoadingState?.isDisabled"
+	[type]="type"
+	[ngClass]="{ 'only-icon': onlyIcon }"
+	(click)="clicked.emit($event)"
+>
+	<ng-container *ngIf="buttonTitle !== '' && !isLoadingActive">
+		<span>{{ buttonTitle }}</span>
+	</ng-container>
+
+	<ng-container *ngIf="svgIcon !== '' && !isLoadingActive">
+		<mat-icon [svgIcon]="svgIcon"></mat-icon>
+	</ng-container>
+
+	<ng-container *ngIf="isLoadingActive">
+		<div class="loading-container">
+			<div class="lds-spinner">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+	</ng-container>
+</button>
+
+<!--<ng-template #linkButton>-->
+<!--  <span-->
+<!--	  class="link-btn"-->
+<!--	  [class]="customClass"-->
+<!--	  [class.disabled]="disabled"-->
+<!--	  (click)="type === 'link' ? redirectToRoute() : clicked.emit()"-->
+<!--  >-->
+<!--	  <mat-icon [svgIcon]="svgIcon" *ngIf="svgIcon"></mat-icon>-->
+<!--	  {{ buttonTitle }}-->
+<!--  </span>-->
+<!--</ng-template>-->

@@ -1,0 +1,15 @@
+:host {
+  display: block;
+  margin-top: 10rem;
+}
+
+.all-collections {
+  .button {
+    padding: 0 80px;
+    box-sizing: border-box;
+
+    app-button {
+      display: inline-block;
+    }
+  }
+}

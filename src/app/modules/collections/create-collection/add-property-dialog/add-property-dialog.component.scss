@@ -1,0 +1,20 @@
+.add-property-dialog {
+  min-width: 580px;
+  padding: 10px 70px;
+  box-sizing: border-box;
+
+  h3 {
+    color: var(--whiteColor);
+    margin-bottom: 36px;
+  }
+
+  p {
+    color: var(--whiteColor);
+    padding-left: 20px;
+    font-size: 14px;
+  }
+
+  .checkboxes {
+    padding-left: 20px;
+  }
+}

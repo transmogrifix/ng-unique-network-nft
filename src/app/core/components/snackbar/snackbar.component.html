@@ -1,0 +1,20 @@
+<!-- Error Snackbar -->
+<div *ngIf="error" class="snackbar-container" [ngClass]="{ 'error': error }">
+	<div class="snackbar-text">
+		<span>
+			{{ msg }}
+		</span>
+	</div>
+	<mat-icon [style.color]="data.errorColor">error_outline</mat-icon>
+</div>
+
+<!-- Success Snackbar -->
+<div *ngIf="success" class="snackbar-container" [ngClass]="{ 'success': success }">
+	<div class="snackbar-text">
+		<span>
+			{{ msg }}
+		</span>
+	</div>
+	<mat-icon [style.color]="data.successColor">task_alt</mat-icon>
+</div>
+

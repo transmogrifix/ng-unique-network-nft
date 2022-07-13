@@ -1,0 +1,86 @@
+mat-checkbox {
+  cursor: default !important;
+
+  .mat-checkbox-layout {
+    cursor: pointer;
+
+    .mat-checkbox-inner-container {
+      // Set border with and color
+      .mat-checkbox-frame {
+        border-color: var(--placeholderColor);
+        border-width: 1.5px;
+      }
+
+      // Hide ripple element
+      .mat-checkbox-ripple {
+        display: none;
+      }
+    }
+
+    // Checkbox label
+    .mat-checkbox-label {
+      color: var(--whiteColor);
+      font-size: 14px;
+      line-height: 20px;
+      font-weight: 500;
+    }
+  }
+
+  // When checkbox is checked
+  &.mat-checkbox-checked {
+    .mat-checkbox-inner-container {
+      // Set border color
+      .mat-checkbox-frame {
+        border-color: var(--whiteColor);
+      }
+
+      // Set background color
+      .mat-checkbox-background {
+        background-color: transparent;
+
+        // Position of the checkmark
+        .mat-checkbox-checkmark {
+          width: 73%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+
+        // Set checkmark color, and border width
+        .mat-checkbox-checkmark-path {
+          stroke: var(--whiteColor) !important;
+          stroke-width: 3px !important;
+          stroke-linejoin: round;
+          stroke-linecap: round;
+        }
+      }
+    }
+  }
+
+  // When checkbox is disabled
+  &.mat-checkbox-disabled {
+    .mat-checkbox-inner-container {
+      // Set border color
+      .mat-checkbox-frame {
+        border-color: var(--placeholderColor);
+      }
+
+      .mat-checkbox-background {
+        .mat-checkbox-checkmark-path {
+          stroke: var(--placeholderColor) !important;
+        }
+      }
+    }
+
+    .mat-checkbox-label {
+      color: var(--placeholderColor);
+    }
+  }
+
+  // White label
+  &.white {
+    .mat-checkbox-layout .mat-checkbox-label {
+      color: var(--whiteColor) !important;
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<section class="add-property-dialog">
+  <h3>Add Property</h3>
+
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <app-input-control
+      name="Name"
+      placeholder="Name"
+      formControlName="name"
+      class="mb-4"
+      [formControl]="formGroupControls.name"
+    ></app-input-control>
+
+    <p>Permissions</p>
+    <div class="checkboxes flex fd-c gap-16">
+      <mat-checkbox formControlName="admin">Admin</mat-checkbox>
+      <mat-checkbox formControlName="owner">Owner</mat-checkbox>
+      <mat-checkbox formControlName="mutable">Mutable</mat-checkbox>
+    </div>
+
+    <div class="button flex mt-50 gap-20">
+      <app-button
+        buttonTitle="Cancel"
+        type="button"
+        variant="secondary"
+        [mat-dialog-close]="false"
+      ></app-button>
+
+      <app-button
+        buttonTitle="Save"
+        type="submit"
+        [disabled]="!canSubmit"
+      ></app-button>
+    </div>
+  </form>
+</section>

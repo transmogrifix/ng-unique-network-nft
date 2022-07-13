@@ -1,0 +1,63 @@
+.collection {
+	border-top-left-radius: 20px;
+	background: rgba(2, 9, 27, 0.35);
+	padding: 30px 80px;
+
+	header {
+		margin-bottom: 36px;
+
+		h3 {
+			color: var(--whiteColor);
+			display: inline-block;
+			margin-bottom: 0;
+
+			&:hover {
+				text-decoration: underline;
+				cursor: pointer;
+			}
+		}
+	}
+
+	.content {
+		.nfts {
+			.nft {
+				width: 160px;
+				height: 212px;
+				background: #0a1635;
+				padding: 16px 23px 20px 23px;
+				border-radius: 20px;
+				box-shadow: 0 3px 12px 0 rgba(2, 6, 18, 0.18);
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				justify-content: center;
+				box-sizing: border-box;
+
+				.imgcla {
+					max-height: 140px;
+				}
+
+				p {
+					color: var(--whiteColor);
+					font-weight: 500;
+					font-size: 14px;
+					margin-top: 20px;
+					margin-bottom: 0;
+
+					a {
+						color: var(--whiteColor);
+						text-decoration: none;
+
+						&:hover {
+							text-decoration: underline;
+						}
+					}
+				}
+			}
+		}
+
+		.buttons {
+			margin-top: -4rem;
+		}
+	}
+}

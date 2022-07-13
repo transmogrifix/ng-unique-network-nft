@@ -1,0 +1,29 @@
+<header class="flex jc-sb">
+	<!-- Logo -->
+	<img src="assets/images/unique-network-logo.svg" alt="Unique network logo">
+
+	<div class="flex ai-c gap-20">
+		<!-- Collection button -->
+		<app-button
+			buttonTitle="Create Collection"
+			svgIcon="plus"
+			buttonWidth="196px"
+			routerLink="/collections/create"
+		></app-button>
+
+		<app-identicon
+			[address]="currentAddress"
+			[matMenuTriggerFor]="accountsPanel"
+		></app-identicon>
+
+		<mat-menu #accountsPanel class="accounts-menu">
+			<div class="accounts-panel">
+				<div *ngFor="let account of allAccounts$ | async" class="account flex ai-c" (click)="setCurrentAccount(account)">
+					<app-identicon address="5FTojEBfsdRzHuz9j19vVcF7wAoGggBq7XsJrHFd2Yy8t8xA"></app-identicon>
+
+					<span>{{ account.meta.name }}</span>
+				</div>
+			</div>
+		</mat-menu>
+	</div>
+</header>

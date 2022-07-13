@@ -1,0 +1,18 @@
+<mat-label>{{ placeholder }}</mat-label>
+<mat-form-field appearance="outline" class="textarea-input">
+	<textarea
+		matInput
+		type="text"
+		[formControl]="formControl"
+		[placeholder]="placeholder"
+		[rows]="rows"
+		[value]="value"
+		(change)="setValue($event)"
+		(blur)="onTouch()"
+	>
+	</textarea>
+
+	<mat-error>
+		{{ name }} is required
+	</mat-error>
+</mat-form-field>

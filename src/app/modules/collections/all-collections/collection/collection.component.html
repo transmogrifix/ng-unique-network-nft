@@ -1,0 +1,47 @@
+<section class="collection">
+	<header class="flex jc-sb ai-c">
+		<h3>{{ nftCollection.name }}</h3>
+
+		<div class="buttons flex gap-20">
+			<app-button
+				buttonTitle="Mint"
+				variant="blue"
+				buttonWidth="140px"
+				buttonHeight="42px"
+				(clicked)="redirectToMint()"
+			></app-button>
+
+			<app-button
+				buttonTitle="Edit"
+				svgIcon="edit-pen"
+				customClass="white"
+				buttonWidth="140px"
+				buttonHeight="42px"
+				(clicked)="redirectToCollection()"
+			></app-button>
+		</div>
+	</header>
+
+	<div class="content flex jc-sb w-100">
+		<div class="nfts flex gap-60">
+			<ng-container *ngIf="collectionNfts$ | async as collectionNfts">
+				<!-- All nfts -->
+				<ng-container *ngIf="collectionNfts.length > 0; else emptyNfts">
+					<div class="nft" *ngFor="let nft of collectionNfts" routerLink>
+						<!-- Image -->
+						<img [src]="nft.ImageData" alt="Employees Collection" class="imgcla"/>
+						<!-- Title -->
+						<p><a [routerLink]="['/chart']" [queryParams]="{tokenId: nft.TokenId, collectionId: nft.CollectionId}">{{ nft.Name }}</a></p>
+					</div>
+				</ng-container>
+
+				<!-- Show empty cards -->
+				<ng-template #emptyNfts>
+					<ng-container *ngFor="let nft of emptyCollectionArray">
+						<div class="nft empty"></div>
+					</ng-container>
+				</ng-template>
+			</ng-container>
+		</div>
+	</div>
+</section>

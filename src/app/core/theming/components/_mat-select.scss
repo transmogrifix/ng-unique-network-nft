@@ -1,0 +1,102 @@
+@mixin breakpoint-width($size) {
+  @media only screen and (max-width: $size) {
+    @content;
+  }
+}
+
+mat-select {
+  .mat-select-value {
+    text-indent: 8px;
+    font-weight: 500;
+    //max-height: 20.8px;
+    height: 100%;
+    //line-height: 1 !important;
+    color: var(--primaryColor);
+  }
+
+  // Select placeholder
+  .mat-select-placeholder {
+    color: var(--placeholderColor);
+  }
+
+  // Hide default arrow
+  .mat-select-arrow {
+    display: none;
+  }
+
+  &.mat-select-disabled {
+    .mat-select-value {
+      color: var(--placeholderColor);
+    }
+  }
+
+  @include breakpoint-width(470px){
+    .mat-select-value {
+      text-indent: 4px;
+    }
+  }
+}
+
+// Select option panel
+.mat-select-option {
+  box-shadow: 0 24px 24px 0 rgba(0, 0, 0, 0.08);
+  min-width: 90% !important;
+  position: absolute;
+  top: 40px;
+  right: -14%;
+  border-radius: 0 !important;
+
+  mat-option {
+    background-color: var(--whiteColor);
+    color: var(--rich-black-100) !important;
+    font-weight: 500;
+    padding: 0 20px;
+
+    &:hover {
+      background-color: var(--periwinkle-crayola-90) !important;
+    }
+  }
+
+  // When option is active
+  .mat-option.mat-active {
+    background-color: var(--periwinkle-crayola-90) !important;
+  }
+
+  // When option is selected
+  .mat-option.mat-selected {
+    background-color: var(--periwinkle-crayola-100) !important;
+  }
+
+  &.full-width {
+    max-width: unset !important;
+  }
+
+  @include breakpoint-width(1024px){
+    &.full-width {
+      mat-option {
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  @include breakpoint-width(768px){
+    &.full-width {
+      max-width: calc(100vw - 60px) !important;
+
+      mat-option {
+        font-size: 12px;
+        line-height: 20px;
+        white-space: break-spaces;
+        height: 100%;
+        min-height: 3em;
+      }
+    }
+  }
+
+  @include breakpoint-width(450px){
+    &.full-width {
+      max-width: 100% !important;
+    }
+  }
+}

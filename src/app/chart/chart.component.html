@@ -1,0 +1,19 @@
+<section class="chart flex ai-c jc-c">
+	<!-- Chart -->
+	<div id="chartdiv"></div>
+
+	<!-- Nft details -->
+	<app-nft-details *ngIf="openDetails"
+					 [selectedNft]="selectedNft"
+					 [isNew]="isNewNft"
+					 (closeClicked)="closeNftDetails()"
+					 (detachClicked)="onDetachClicked($event)"
+					 [working]="detaching"></app-nft-details>
+</section>
+
+<!-- Collection details -->
+<app-new-collections [isOpened]="openDetails"
+					 [selectedNft]="selectedNft"
+					 (selectedNewNft)="setSelectedNft($event, true)"
+					 (attachToClicked)="onAttachToClicked($event)"
+					 [attaching]="attaching"></app-new-collections>

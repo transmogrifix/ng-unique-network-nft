@@ -1,0 +1,81 @@
+.create-collection {
+	min-height: calc(100vh - 120px);
+	background-image: url('../../../../assets/images/shapes.svg');
+	background-position: left bottom;
+	background-repeat: no-repeat;
+	padding-bottom: 30px;
+
+	.create-collection-form {
+		min-width: 580px;
+		border-radius: 20px;
+		box-shadow: 6px 11px 27px 8px #030a1c;
+		padding: 30px 90px;
+		box-sizing: border-box;
+
+		h3 {
+			color: var(--whiteColor);
+			margin-bottom: 36px;
+		}
+
+		form {
+			.upload-image {
+				width: 100%;
+				height: 90px;
+				border: 1px dashed var(--placeholderColor);
+				border-radius: 8px;
+				cursor: pointer;
+
+				p {
+					margin: 0;
+					color: var(--placeholderColor);
+					gap: 6px;
+				}
+			}
+
+			input {
+				display: none;
+			}
+
+			.image-preview {
+				width: 100%;
+				height: 250px;
+
+				img {
+					width: 100%;
+					height: 100%;
+				}
+			}
+
+			.properties-table {
+				.header {
+					color: var(--placeholderColor);
+					border-bottom: 1px solid var(--placeholderColor);
+					padding: 0 20px;
+
+					p {
+						margin-bottom: 12px;
+					}
+				}
+
+				.data {
+					color: var(--whiteColor);
+
+					.row {
+						padding: 16px 20px;
+						border-bottom: 1px solid var(--placeholderColor);
+
+						p {
+							margin-bottom: 0;
+						}
+					}
+
+					.no-data {
+						color: var(--placeholderColor);
+						border-bottom: 1px solid var(--placeholderColor);
+					}
+
+				}
+			}
+		}
+	}
+}

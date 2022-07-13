@@ -1,0 +1,51 @@
+.home-page {
+  min-height: calc(100vh - 250px);
+  padding: 0 80px;
+
+  .text-section {
+    max-width: 568px;
+
+    h1 {
+      color: var(--whiteColor);
+      margin-bottom: 50px;
+      font-weight: 300;
+      font-size: 26px;
+	  line-height: 36px;
+    }
+  }
+
+  .ntfs {
+    position: relative;
+    max-width: 700px;
+    width: 100%;
+    height: 500px;
+
+    .nft {
+      background-color: var(--primaryColor);
+      border-radius: 50%;
+      box-shadow: -13px -5px 21px 17px #0a1635, inset 3px 3px 10px 0 #2957cd;
+      width: 185px;
+      height: 185px;
+      position: absolute;
+
+      &.small {
+        left: 0;
+        top: 0;
+      }
+
+      &.medium {
+        width: 311px;
+        height: 311px;
+        left: -5rem;
+        bottom: -8rem;
+      }
+
+      &.large {
+        right: 0;
+        top: 5rem;
+        width: 393px;
+        height: 393px;
+      }
+    }
+  }
+}

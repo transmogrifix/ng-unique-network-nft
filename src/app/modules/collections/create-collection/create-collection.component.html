@@ -1,0 +1,125 @@
+<section class="create-collection flex jc-c ai-c">
+	<section class="create-collection-form">
+		<h3>{{ isEdit ? 'Edit' : 'Create' }} Collection</h3>
+
+		<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+			<!-- Name control -->
+			<app-input-control
+				name="Name"
+				placeholder="Name"
+				formControlName="name"
+				class="mb-4"
+				[formControl]="formGroupControls.name"
+			></app-input-control>
+
+			<!-- Description control -->
+			<app-textarea-control
+				name="Description"
+				placeholder="Description"
+				formControlName="description"
+				class="mb-4"
+				[formControl]="formGroupControls.description"
+			></app-textarea-control>
+
+			<!-- Upload image -->
+			<ng-container *ngIf="selectedImageData === ''; else imagePreview">
+				<div class="upload-image flex ai-c jc-c mb-26" (click)="fileInput.click()">
+
+					<p class="flex ai-c">
+						<mat-icon svgIcon="upload"></mat-icon>
+						Upload image
+					</p>
+				</div>
+			</ng-container>
+
+			<ng-template #imagePreview>
+				<div class="image-preview pb-20">
+					<img [src]="selectedImageData" alt="Selected Collection image" (click)="fileInput.click()"/>
+				</div>
+			</ng-template>
+
+			<input type="file" #fileInput (change)="onSelectedImage($event)">
+
+			<!-- Attach to -->
+			<app-select-control
+				name="Attach to"
+				placeholder="Attach to"
+				formControlName="attachTo"
+				[multiple]="true"
+				[formControl]="formGroupControls.attachTo"
+			>
+				<mat-option *ngFor="let collection of allNftCollections"
+							[value]="collection.id">{{ collection.name }}</mat-option>
+			</app-select-control>
+
+			<!-- Properties -->
+			<div class="properties mt-70">
+				<app-button
+					buttonTitle="Add property"
+					type="button"
+					svgIcon="plus"
+					(clicked)="openAddPropertyDialog()"
+				></app-button>
+
+				<!-- Table with properties -->
+				<div class="properties-table mt-50">
+					<div class="header flex jc-sb">
+						<p>Name</p>
+						<p>Permissions</p>
+					</div>
+
+					<div class="data">
+						<ng-container *ngIf="props.length > 0; else noDataFound">
+							<div class="row flex jc-sb" *ngFor="let prop of props">
+								<p>{{ prop.key }}</p>
+
+								<div class="permissions gap-20 flex jc-sb">
+									<!-- Admin -->
+									<mat-checkbox
+										matTooltip="Admin can change"
+										[checked]="prop.permission.collectionAdmin"
+										[disabled]="true"
+									></mat-checkbox>
+
+									<!-- Owner -->
+									<mat-checkbox
+										matTooltip="Owner can change"
+										[checked]="prop.permission.tokenOwner"
+										[disabled]="true"
+									></mat-checkbox>
+
+									<!-- Mutable -->
+									<mat-checkbox
+										matTooltip="Mutable"
+										[checked]="prop.permission.mutable"
+										[disabled]="true"
+									></mat-checkbox>
+								</div>
+							</div>
+						</ng-container>
+
+						<ng-template #noDataFound>
+							<p class="no-data flex jc-c pt-20 pb-20">No data.</p>
+						</ng-template>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="buttons mt-50 gap-20 flex ai-c">
+				<app-button
+					buttonTitle="Cancel"
+					type="button"
+					variant="secondary"
+					(clicked)="redirectToCollections()"
+				></app-button>
+
+				<app-button
+					[buttonTitle]="isEdit ? 'Update' : 'Create'"
+					type="submit"
+					[buttonLoadingState]="buttonLoadingState"
+				></app-button>
+			</div>
+		</form>
+	</section>
+</section>

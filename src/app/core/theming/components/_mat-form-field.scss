@@ -1,0 +1,125 @@
+mat-form-field {
+  display: block;
+  width: 100%;
+
+  input, textarea {
+    text-indent: 8px;
+    line-height: 1 !important;
+    font-weight: 500 !important;
+
+    &::placeholder {
+      color: var(--placeholderColor) !important;
+      font-weight: 300;
+    }
+  }
+
+  textarea.mat-input-element {
+    margin: 0 !important;
+  }
+
+  // Subscript wrapper ( Section where is displayed error message or hint message )
+  .mat-form-field-subscript-wrapper {
+    margin-top: 4px;
+    padding: 0 20px !important;
+  }
+
+  // Unset default margin bottom
+  .mat-form-field-wrapper {
+    margin: 4px 0 0 0 !important;
+  }
+
+  // Set padding and unset default border top
+  .mat-form-field-infix {
+    padding: 17px 0 12px 0 !important;
+    border-top: 0;
+  }
+
+  // Set background color of controls
+  .mat-form-field-outline {
+    background-color: var(--whiteColor);
+    border-radius: 8px;
+  }
+
+  // Set default border color for controls
+  .mat-form-field-outline-thick {
+    color: var(--whiteColor) !important;
+    opacity: 1 !important;
+  }
+
+  .mat-form-field-outline-start,
+  .mat-form-field-outline-end,
+  .mat-form-field-outline-gap {
+    border-color: var(--whiteColor) !important;
+    border-width: 1.5px !important;
+  }
+
+  // Set border radius
+  .mat-form-field-outline-start {
+    border-radius: 8px 0 0 8px !important;
+  }
+
+  .mat-form-field-outline-end {
+    border-radius: 0 8px 8px 0 !important;
+  }
+
+  // When control is active (focused)
+  &.mat-focused {
+    input {
+      caret-color: var(--primaryColor);
+      color: var(--primaryColor);
+    }
+  }
+
+  // When form control is disabled
+  &.mat-form-field-disabled {
+    // Set border color
+    .mat-form-field-outline-thick {
+      color: var(--placeholderColor) !important;
+    }
+
+    //.mat-form-field-outline-start,
+    //.mat-form-field-outline-end,
+    //.mat-form-field-outline-gap {
+    //  border-color: var(--periwinkle-crayola-100) !important;
+    //  border-width: 1.5px !important;
+    //}
+
+    // Set placeholder color
+    input {
+      color: var(--placeholderColor) !important;
+    }
+  }
+
+  // When control is invalid, change border color
+  &.mat-form-field-invalid {
+    //.mat-form-field-outline-start,
+    //.mat-form-field-outline-end,
+    //.mat-form-field-outline-gap {
+    //  border-color: var(--radical-red-100) !important;
+    //}
+
+    //.mat-form-field-outline-thick {
+    //  color: var(--radical-red-100) !important;
+    //}
+  }
+}
+
+// Select control
+.select-control {
+  .mat-form-field-suffix {
+    top: 0.6em !important;
+  }
+
+  .mat-form-field-infix {
+    padding: 19px 0 15px 0 !important;
+  }
+}
+
+// Count control
+.count-control {
+  width: 80px;
+
+  .mat-form-field-infix {
+    width: 80px !important;
+  }
+}

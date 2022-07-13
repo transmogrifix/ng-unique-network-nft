@@ -1,0 +1,37 @@
+<mat-label>{{ placeholder }}</mat-label>
+<mat-form-field appearance="outline" class="select-control">
+	<mat-select
+		disableOptionCentering
+		[panelClass]="panelCustomClass"
+		[class]="customClass"
+		#select
+		[formControl]="formControl"
+		[placeholder]="placeholder"
+		[multiple]="multiple"
+		[value]="value"
+	>
+		<ng-container>
+			<mat-option *ngFor="let option of selectOptions" [value]="option.value">{{ option.viewValue }}</mat-option>
+		</ng-container>
+	</mat-select>
+
+	<mat-icon
+		matSuffix
+		*ngIf="!isDisabled"
+		svgIcon="arrow-down"
+		[class.rotate]="select.panelOpen"
+		(click)="select.open()"
+	></mat-icon>
+
+	<mat-error *ngIf="!isHintActive">
+		{{ name }} is required
+	</mat-error>
+
+	<mat-hint *ngIf="isHintActive && formControl.valid">
+		<span class="title">Balance</span> <span class="hint-value">{{ hintValue }}</span>
+	</mat-hint>
+
+</mat-form-field>
+<div style="display: none" *ngIf="!selectOptions">
+	<ng-content></ng-content>
+</div>

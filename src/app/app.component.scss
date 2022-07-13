@@ -1,0 +1,10 @@
+:host {
+  display: block;
+  background-color: var(--primaryColor);
+  background-image: url(../assets/images/header-background.png);
+  background-repeat: no-repeat;
+  background-position: top left;
+  min-height: 100vh;
+  //padding: 0 80px;
+  box-sizing: border-box;
+}

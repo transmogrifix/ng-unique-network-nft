@@ -1,0 +1,12 @@
+:host {
+  display: block;
+}
+
+mat-icon {
+  transition: all 0.2s ease-in;
+  color: var(--rich-black-100);
+
+  &.rotate {
+    transform: rotate(180deg);
+  }
+}

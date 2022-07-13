@@ -1,0 +1,15 @@
+header {
+  padding: 30px 80px;
+}
+
+.accounts-panel {
+	min-width: 200px;
+
+	.account {
+		cursor: pointer;
+
+		span {
+			color: var(--whiteColor);
+		}
+	}
+}
